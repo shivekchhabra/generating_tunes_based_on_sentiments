@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang = "">
+<head>
+  <meta charset = "utf-8" />
+    <meta http-equiv ="X-UA-Compatible" content = "IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/AppStyle.css">
+  <title>Musical Tune Generation based on Sentiments</title>
+  <script language="JavaScript">
+    function showInput() {
+        document.getElementById('display').innerHTML = 
+                    document.getElementById("user_input").value;
+      
+    }
+    // function getValue(option)
+    // {
+    //   // if (option.value=='Please Select an Emotion')
+    //   // {alert('Select an appropriate emotion')}
+    //   alert(option);
+    // }
+  </script>
+  <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.22.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
+</head>
+<body> 
+    <h2><center>Simon Fraser University Music Generator</center></h2>
+    <form action="{{url_for('generate')}}" method="post">
+<div >
+  <center>
+    <select name="comp_select" class="Input" >
+    <!-- onchange="getValue(this.value);" > -->
+      {% for o in data %}
+      <option value="{{ o.emotion }}">{{ o.emotion }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="pred-btn" > Generate </button>
+  </center>
+  </div>
+</form>
+
+
+</body>
+</html>
